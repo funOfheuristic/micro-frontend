@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'module-federation-root',
@@ -7,4 +13,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dashboard';
+
+  @ViewChild('formComponent', { read: ViewContainerRef })
+  formComponent!: ViewContainerRef;
+
+  async loadComponent() {
+    const { RemoteEntryComponent } = await import('login/component');
+
+    this.formComponent.clear();
+    this.formComponent.createComponent(RemoteEntryComponent);
+  }
 }

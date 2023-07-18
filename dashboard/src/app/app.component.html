@@ -2,4 +2,9 @@
   <li><a routerLink="/">Home</a></li>
   <li><a routerLink="login">Login</a></li>
 </ul>
+<div style="text-align: center">
+  <button (click)="loadComponent()">Load Component</button>
+</div>
+
+<ng-template #formComponent></ng-template>
 <router-outlet></router-outlet>
